@@ -11,9 +11,14 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg')
 });
 
+
 /* Window size */
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
+window.addEventListener('resize', () => {
+  console.log(window.innerHeight , "+" ,window.innerWidth)
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+})
+
 camera.position.setZ(5);
 
 renderer.render(scene, camera);  
@@ -25,14 +30,14 @@ const material = new THREE.MeshStandardMaterial( {color: 0xFFFF00} );
 
 const torus = new THREE.Mesh(geometry, material);
 
-scene.add(torus);
+// scene.add(torus);
 let fishArray = [];
 /* Fish Geometry */
 
 function addFish(x,y,z) {
   const fishShape = new THREE.Shape();
   x = THREE.MathUtils.randFloatSpread(250);
-  y = THREE.MathUtils.randFloatSpread(250);
+  y = THREE.MathUtils.randFloatSpread(150);
   z = THREE.MathUtils.randFloatSpread(200);
   // z = THREE.MathUtils.randFloatSpread(50);
   fishShape.moveTo(x, y);
