@@ -1,5 +1,4 @@
 # ThreeJS Project
+#### Underwater scene
 
-#### Underwater scene during a blast
-
-### To Run: Use command '''npm run dev'''
+#### To Run: Use command '''npm run dev'''
