@@ -11,6 +11,7 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg')
 });
 
+renderer.setSize(window.innerWidth, window.innerHeight);
 
 /* Window size */
 window.addEventListener('resize', () => {
@@ -19,7 +20,7 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(window.devicePixelRatio);
 })
 
-camera.position.setZ(5);
+camera.position.setZ(200);
 
 renderer.render(scene, camera);  
 
@@ -31,6 +32,7 @@ const material = new THREE.MeshStandardMaterial( {color: 0xFFFF00} );
 const torus = new THREE.Mesh(geometry, material);
 
 // scene.add(torus);
+
 let fishArray = [];
 /* Fish Geometry */
 
@@ -106,14 +108,14 @@ function addBubble() {
 Array(2000).fill().forEach(addBubble); 
 
 function animate() {
-  requestAnimationFrame(animate);
-
+  
   torus.rotation.x += 0.1;
   fishArray.forEach((fish) => {
     fish.position.x -= 0.025 
   })
   controls.update();
   renderer.render(scene,camera);
+  requestAnimationFrame(animate);
 }
 
 animate()
